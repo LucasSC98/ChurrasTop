@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>DER — ChurrasTop</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f8f6f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+  }
+  h1 {
+    color: #a9341e;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  p.subtitle {
+    color: #777;
+    font-size: .85rem;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .canvas {
+    position: relative;
+    width: 960px;
+    height: 680px;
+  }
+  /* ─── Tabelas ─────────────────────────────────────────────── */
+  .table-box {
+    position: absolute;
+    border: 2px solid #d94a2b;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 14px #d94a2b22;
+    min-width: 180px;
+    font-size: .78rem;
+  }
+  .table-box .head {
+    background: #d94a2b;
+    color: #fff;
+    font-weight: 700;
+    font-size: .82rem;
+    letter-spacing: .04em;
+    padding: 7px 12px;
+    text-transform: uppercase;
+  }
+  .table-box .col {
+    padding: 3px 12px;
+    border-top: 1px solid #f5ece8;
+    color: #333;
+  }
+  .table-box .col.pk  { font-weight: 700; color: #a9341e; }
+  .table-box .col.fk  { color: #0073aa; }
+
+  /* ─── Legenda ─────────────────────────────────────────────── */
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    font-size: .8rem;
+    color: #555;
+    align-items: center;
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+
+  /* ─── SVG de relacionamentos ─────────────────────────────── */
+  svg.rels {
+    position: absolute;
+    top: 0; left: 0;
+    width: 960px;
+    height: 680px;
+    pointer-events: none;
+  }
+  svg.rels line { stroke: #b0a090; stroke-width: 2; }
+  svg.rels text { font-size: 11px; fill: #a9341e; font-weight: 700; }
+  svg.rels .label-bg { fill: #f8f6f2; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .canvas { width: 100%; height: auto; }
+  }
+</style>
+</head>
+<body>
+<h1>🔥 Diagrama Entidade-Relacionamento — ChurrasTop</h1>
+<p class="subtitle">Gerado automaticamente a partir do <code>schema.sql</code> &bull; Projeto 2º Bimestre</p>
+
+<div class="canvas">
+  <!-- SVG de linhas de relacionamento (desenhado antes para ficar atrás das tabelas) -->
+  <svg class="rels">
+    <!-- USUARIOS -> CHURRASCOS (1:N) -->
+    <line x1="200" y1="90" x2="370" y2="90"/>
+    <text x="272" y="82">1</text>
+    <text x="348" y="82">N</text>
+
+    <!-- CHURRASCOS -> CHURRASCO_PARTICIPANTE (1:N) -->
+    <line x1="560" y1="120" x2="560" y2="290"/>
+    <text x="565" y="200">1</text>
+    <text x="565" y="268">N</text>
+
+    <!-- CHURRASCO_PARTICIPANTE -> PARTICIPANTES (N:1) -->
+    <line x1="660" y1="330" x2="800" y2="230"/>
+    <text x="685" y="305">N</text>
+    <text x="790" y="225">1</text>
+
+    <!-- CHURRASCOS -> CHURRASCO_PRODUTO (1:N) -->
+    <line x1="560" y1="160" x2="700" y2="430"/>
+    <text x="612" y="280">1</text>
+    <text x="695" y="420">N</text>
+
+    <!-- CHURRASCO_PRODUTO -> PRODUTOS (N:1) -->
+    <line x1="800" y1="460" x2="860" y2="100"/>
+    <text x="813" y="300">N</text>
+    <text x="852" y="118">1</text>
+
+    <!-- CHURRASCOS -> SOLICITACOES (1:N) -->
+    <line x1="370" y1="150" x2="180" y2="400"/>
+    <text x="286" y="258">1</text>
+    <text x="195" y="385">N</text>
+
+    <!-- SOLICITACOES -> PARTICIPANTES (N:1) -->
+    <line x1="310" y1="395" x2="800" y2="185"/>
+    <text x="360" y="390">N</text>
+    <text x="790" y="200">1</text>
+
+    <!-- SOLICITACOES -> PRODUTOS (N:1) -->
+    <line x1="270" y1="500" x2="820" y2="100"/>
+    <text x="420" y="380">N</text>
+    <text x="812" y="115">1</text>
+  </svg>
+
+  <!-- ═══ USUARIOS ═══ -->
+  <div class="table-box" style="left:20px; top:40px; width:180px;">
+    <div class="head">USUARIOS</div>
+    <div class="col pk">🔑 id (PK)</div>
+    <div class="col">nome</div>
+    <div class="col">email</div>
+    <div class="col">senha</div>
+    <div class="col">criado_em</div>
+  </div>
+
+  <!-- ═══ CHURRASCOS ═══ -->
+  <div class="table-box" style="left:370px; top:40px; width:200px;">
+    <div class="head">CHURRASCOS</div>
+    <div class="col pk">🔑 id (PK)</div>
+    <div class="col">nome</div>
+    <div class="col">data_churrasco</div>
+    <div class="col">quantidade_adultos</div>
+    <div class="col">quantidade_criancas</div>
+    <div class="col">duracao</div>
+    <div class="col">tipo</div>
+    <div class="col fk">🔗 usuario_id (FK)</div>
+    <div class="col">criado_em</div>
+  </div>
+
+  <!-- ═══ PARTICIPANTES ═══ -->
+  <div class="table-box" style="left:800px; top:140px; width:155px;">
+    <div class="head">PARTICIPANTES</div>
+    <div class="col pk">🔑 id (PK)</div>
+    <div class="col">nome</div>
+    <div class="col">telefone</div>
+    <div class="col">tipo</div>
+  </div>
+
+  <!-- ═══ PRODUTOS ═══ -->
+  <div class="table-box" style="left:800px; top:40px; width:155px;">
+    <div class="head">PRODUTOS</div>
+    <div class="col pk">🔑 id (PK)</div>
+    <div class="col">nome</div>
+    <div class="col">categoria</div>
+    <div class="col">preco</div>
+    <div class="col">unidade_medida</div>
+    <div class="col">qtd_por_pessoa</div>
+    <div class="col">limite_repeticao</div>
+    <div class="col">ativo</div>
+  </div>
+
+  <!-- ═══ CHURRASCO_PARTICIPANTE ═══ -->
+  <div class="table-box" style="left:460px; top:290px; width:205px;">
+    <div class="head">CHURRASCO_PARTICIPANTE</div>
+    <div class="col pk fk">🔑🔗 churrasco_id (FK, PK)</div>
+    <div class="col pk fk">🔑🔗 participante_id (FK, PK)</div>
+    <div class="col">valor_contribuicao</div>
+    <div class="col">status_pagamento</div>
+  </div>
+
+  <!-- ═══ CHURRASCO_PRODUTO ═══ -->
+  <div class="table-box" style="left:680px; top:420px; width:195px;">
+    <div class="head">CHURRASCO_PRODUTO</div>
+    <div class="col pk fk">🔑🔗 churrasco_id (FK, PK)</div>
+    <div class="col pk fk">🔑🔗 produto_id (FK, PK)</div>
+    <div class="col">quantidade</div>
+  </div>
+
+  <!-- ═══ SOLICITACOES_PARTICIPACAO ═══ -->
+  <div class="table-box" style="left:20px; top:360px; width:200px;">
+    <div class="head" style="font-size:.72rem;">SOLICITACOES_PARTICIPACAO</div>
+    <div class="col pk">🔑 id (PK)</div>
+    <div class="col fk">🔗 churrasco_id (FK)</div>
+    <div class="col fk">🔗 participante_id (FK)</div>
+    <div class="col fk">🔗 produto_id (FK)</div>
+    <div class="col">status</div>
+    <div class="col">criado_em</div>
+  </div>
+</div>
+
+<div class="legend">
+  <span><span class="dot" style="background:#a9341e;"></span> PK – Chave Primária</span>
+  <span><span class="dot" style="background:#0073aa;"></span> FK – Chave Estrangeira</span>
+  <span style="color:#b0a090;">——</span> Relacionamento</span>
+  <span>1 e N – Cardinalidade</span>
+</div>
+
+<p style="margin-top:20px; color:#aaa; font-size:.75rem; text-align:center;">
+  Para salvar como PDF: <strong>Ctrl+P → Salvar como PDF</strong>
+</p>
+</body>
+</html>
