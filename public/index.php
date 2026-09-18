@@ -27,7 +27,7 @@ require __DIR__ . '/../includes/header.php';
 ?>
 <section class="hero rounded-4 text-white p-4 p-md-5 mb-4">
     <div class="eyebrow mb-2">Seu painel de organização</div>
-    <h1 class="display-6 fw-bold">Olá, <?= htmlspecialchars($user['nome'] ?? 'churrasqueiro') ?>! 🔥</h1>
+    <h1 class="display-6 fw-bold">Olá, <?= htmlspecialchars($user['nome'] ?? 'churrasqueiro') ?>!</h1>
     <p class="lead mb-0">Planeje o próximo encontro e deixe o churrasco no ponto.</p>
 </section>
 <div class="row g-3 mb-4">
@@ -39,6 +39,6 @@ require __DIR__ . '/../includes/header.php';
     <div class="d-flex justify-content-between align-items-center mb-3"><div><div class="section-title">Meus churrascos</div><small class="text-muted">Acompanhe seus próximos encontros</small></div><a class="btn btn-primary" href="/pages/churrasco_form.php"><i class="bi bi-plus-lg me-1"></i> Novo churrasco</a></div>
     <?php if ($churrascos): ?><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Nome</th><th>Data</th><th>Participantes</th><th>Tipo</th><th></th></tr></thead><tbody>
         <?php foreach ($churrascos as $churrasco): ?><tr><td class="fw-semibold"><?= htmlspecialchars($churrasco['nome']) ?></td><td><?= date('d/m/Y', strtotime($churrasco['data_churrasco'])) ?></td><td><?= (int) $churrasco['participantes'] ?></td><td><span class="badge text-bg-warning"><?= htmlspecialchars($churrasco['tipo']) ?></span></td><td class="text-nowrap"><a class="btn btn-sm btn-outline-danger" href="/pages/calculadora.php?id=<?= (int) $churrasco['id'] ?>">Calculadora</a> <a class="btn btn-sm btn-outline-secondary" href="/pages/participantes.php?id=<?= (int) $churrasco['id'] ?>">Pessoas</a> <a class="btn btn-sm btn-warning" target="_blank" href="/participar.php?id=<?= (int) $churrasco['id'] ?>">Convite</a></td></tr><?php endforeach; ?>
-    </tbody></table></div><?php else: ?><div class="empty-state"><div class="fs-1 mb-2">🔥</div><strong>Seu primeiro churrasco começa aqui</strong><p class="mb-3">Crie um evento e organize tudo em um só lugar.</p><a class="btn btn-primary" href="/pages/churrasco_form.php">Criar churrasco</a></div><?php endif; ?>
+    </tbody></table></div><?php else: ?><div class="empty-state"><div class="fs-1 mb-2"></div><strong>Seu primeiro churrasco começa aqui</strong><p class="mb-3">Crie um evento e organize tudo em um só lugar.</p><a class="btn btn-primary" href="/pages/churrasco_form.php">Criar churrasco</a></div><?php endif; ?>
 </div>
 <?php require __DIR__ . '/../includes/footer.php'; ?>

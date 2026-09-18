@@ -1,5 +1,11 @@
 # ChurrasTop
 
+<p align="center">
+  <a href="https://imgur.com/wbiz7pJ">
+    <img src="https://i.imgur.com/wbiz7pJ.png" alt="Logo ChurrasTop" width="220">
+  </a>
+</p>
+
 Sistema web para planejamento e organização de churrascos. A aplicação permite criar eventos, estimar quantidades e custos, montar uma lista de compras, controlar participantes e contribuições e receber solicitações por meio de um convite público.
 
 O projeto foi desenvolvido como trabalho acadêmico do segundo bimestre, com foco em desenvolvimento web, modelagem de banco de dados, uso de PHP, organização de código e execução com Docker.
