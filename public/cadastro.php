@@ -26,5 +26,6 @@ require __DIR__ . '/../includes/header.php';
 <div class="card p-4 col-md-6 col-lg-4 mx-auto"><h1 class="h3">Criar conta</h1>
 <?php if ($error): ?><div class="alert alert-danger"><?= htmlspecialchars($error) ?></div><?php endif; ?>
 <form method="post"><label class="form-label">Nome</label><input class="form-control mb-3" name="nome" required><label class="form-label">Email</label><input class="form-control mb-3" type="email" name="email" required><label class="form-label">Senha</label><input class="form-control mb-3" type="password" name="senha" minlength="6" required><button class="btn btn-danger w-100">Cadastrar</button></form>
+<p class="mt-3 mb-0">Já é cadastrado? <a href="/login.php">Clique aqui para fazer login</a></p>
 </div>
 <?php require __DIR__ . '/../includes/footer.php'; ?>
