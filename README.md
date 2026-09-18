@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://imgur.com/wbiz7pJ">
-    <img src="https://i.imgur.com/wbiz7pJ.png" alt="Logo ChurrasTop" width="220">
+    <img src="https://imgur.com/jmVOIdm" alt="Logo ChurrasTop" width="220">
   </a>
 </p>
 
