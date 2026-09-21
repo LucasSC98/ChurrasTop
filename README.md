@@ -405,3 +405,10 @@ https://github.com/LucasSC98/ChurrasTop
 ## Licença
 
 Este projeto foi desenvolvido para fins acadêmicos.
+
+## Autores
+
+Lucas Da Silva Custodio
+João Gustavo Quennehen
+
+
