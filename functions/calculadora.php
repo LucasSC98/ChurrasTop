@@ -38,3 +38,19 @@ function totalLista(array $lista): float
     }
     return $total;
 }
+
+function validarArrayProdutos(array $produtos): array
+{
+    $erros = [];
+    if ($produtos === []) {
+        $erros[] = 'Nenhum produto foi encontrado na lista. Verifique o banco de dados.';
+    } else {
+        foreach ($produtos as $produto) {
+            if ((float) $produto['preco'] < 0 || (float) $produto['quantidade_por_pessoa'] < 0) {
+                $erros[] = 'Existem produtos com preço ou quantidade por pessoa inválidos (valores negativos).';
+                break;
+            }
+        }
+    }
+    return $erros;
+}

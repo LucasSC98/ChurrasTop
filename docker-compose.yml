@@ -4,7 +4,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      DB_HOST: database
+      DB_HOST: 172.28.0.10
       DB_PORT: 3306
       DB_NAME: churrastop
       DB_USER: churrastop

@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $statement->fetch();
     if ($user && password_verify((string) ($_POST['senha'] ?? ''), $user['senha'])) {
         $_SESSION['usuario_id'] = (int) $user['id'];
+        $_SESSION['usuario_nome'] = (string) ($user['nome'] ?? '');
         header('Location: /');
         exit;
     }

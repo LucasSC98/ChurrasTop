@@ -13,7 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = (string) ($_POST['data_churrasco'] ?? '');
     $duracao = (string) ($_POST['duracao'] ?? '');
     $tipo = (string) ($_POST['tipo'] ?? '');
-    if ($nome === '' || $adultos < 0 || $criancas < 0 || $adultos + $criancas === 0 || $data === '') {
+    $duracoesValidas = ['2 horas', '4 horas', '6 horas ou mais'];
+    $tiposValidos = ['Econômico', 'Tradicional', 'ChurrasTop'];
+    $dataValida = DateTime::createFromFormat('Y-m-d', $data);
+    if (
+        $nome === ''
+        || $adultos < 0
+        || $criancas < 0
+        || $adultos + $criancas === 0
+        || $data === ''
+        || !$dataValida
+        || $dataValida->format('Y-m-d') !== $data
+        || !in_array($duracao, $duracoesValidas, true)
+        || !in_array($tipo, $tiposValidos, true)
+    ) {
         $error = 'Preencha o nome, data e informe pelo menos um participante.';
     } else {
         $statement = $db->prepare(

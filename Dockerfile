@@ -13,6 +13,6 @@ COPY functions/ /var/www/functions/
 COPY pages/ /var/www/html/pages/
 COPY assets/ /var/www/html/assets/
 
-RUN printf '<Directory /var/www/html>\n    Options -Indexes\n    AllowOverride All\n    Require all granted\n</Directory>\n' > /etc/apache2/conf-available/churrastop-security.conf \
+RUN printf 'ServerName churrastop.local\n<Directory /var/www/html>\n    Options -Indexes\n    AllowOverride All\n    Require all granted\n</Directory>\n' > /etc/apache2/conf-available/churrastop-security.conf \
     && a2enconf churrastop-security \
     && chown -R www-data:www-data /var/www
