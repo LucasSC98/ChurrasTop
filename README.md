@@ -408,7 +408,7 @@ Este projeto foi desenvolvido para fins acadêmicos.
 
 ## Autores
 
-Lucas Da Silva Custodio
-João Gustavo Quennehen
+- Lucas Da Silva Custodio
+- João Gustavo Quennehen
 
 
